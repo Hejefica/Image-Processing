@@ -1,5 +1,6 @@
 import numpy as np
 import cv2
+from ImgResize import image_resize
 
 imgori = cv2.imread("CETI.jpg")
 
@@ -33,11 +34,18 @@ img_trasl = translation(imgori, 56, 20)
 img_rotated = rotation(imgori, -12)
 img_flipped = flip(imgori, 1)
 
-cv2.imshow("Imagen original", imgori)
-cv2.imshow("Imagen redimensionada", img_resized)
-cv2.imshow("Imagen trasladada", img_trasl)
-cv2.imshow("Imagen rotada", img_rotated)
-cv2.imshow("Imagen volteada", img_flipped)
+
+ImgSize = 220
+cv2.imshow("Original Image", image_resize(imgori, Height = ImgSize))
+cv2.moveWindow('Original Image', 20, 20)
+cv2.imshow("Resized Image", image_resize(img_resized, Height = ImgSize))
+cv2.moveWindow('Resized Image', 300, 20)
+cv2.imshow("Traslated Image", image_resize(img_trasl, Height = ImgSize))
+cv2.moveWindow('Traslated Image', 580, 20)
+cv2.imshow("Rotated Image", image_resize(img_rotated, Height = ImgSize))
+cv2.moveWindow('Rotated Image', 860, 20)
+cv2.imshow("Fliped Image", image_resize(img_flipped, Height = ImgSize))
+cv2.moveWindow('Fliped Image', 1140, 20)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows() 
